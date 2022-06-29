@@ -139,3 +139,4 @@ alias iop="g++ -o2 -std=c++17"
 alias contest="/home/vinicius/maratona/seletiva/contest"
 alias dgantt="fac; cd addons/scheduler/ ; ant deploy-fast; op-finished;"
 alias search-file="find -depth -name"
+#/usr/bin/flameshot gui - keyboard shortcut
