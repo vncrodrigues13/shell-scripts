@@ -9,6 +9,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="spaceship"
+#ZSH_THEME="agnoster"
+
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -70,7 +72,9 @@ ZSH_THEME="spaceship"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+  git
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -112,12 +116,13 @@ source $ZSH/oh-my-zsh.sh
 )
 SPACESHIP_USER_SHOW=always
 SPACESHIP_PROMPT_ADD_NEWLINE=false
-SPACESHIP_CHAR_SYMBOL="❯"
+SPACESHIP_CHAR_SYMBOL="❯❯"
 SPACESHIP_CHAR_SUFFIX=" "
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias pf="cd $HOME/projects"
 alias ga="git add ."
 alias gc="git commit -m"
 alias gd="git diff"
@@ -125,17 +130,42 @@ alias gs="git status"
 alias gch="git checkout"
 alias gpull="git pull"
 alias gpush="git push"
-alias pf="cd $HOME/projects"
 alias fac="cd $HOME/eclipse-workspace/target3"
 alias tg="fac; cd target2;"
-alias op-finished="notify-send 'The operation was completed'"
+alias op-finished="notify-send 'The operation was completed' && paplay --volume=65536 /usr/share/sounds/Yaru/stereo/complete.oga && date"
 alias dfast="tg; ant deploy-fast && op-finished"
 alias dfull="tg; ant deploy-full &&  op-finished"
 alias cad="tg; ant clean-and-deploy && op-finished"
-alias gantt="cd $HOME/eclipse-workspace/target3/portal/jboss-eap-6.4/standalone/deployments/ROOT.war/html/portlet/facilit/scheduler; yarn"
-alias asd="g++ -std=c++17 -o2 Wshadow -Wall"
-alias target="echo 'f@ct@rget153624'"
-alias iop="g++ -o2 -std=c++17"
-alias dgantt="fac; cd addons/scheduler/ ; ant deploy-fast; op-finished;"
+alias ganttfolder="fac; cd addons/scheduler;"
+alias gantt="fac; cd portal/jboss-eap-6.4/standalone/deployments/ROOT.war/html/portlet/facilit/scheduler; yarn"
+alias buildganttcomplete="ganttfolder; ant create-eclipse-project; dgantt; gantt; ganttfolder; ant deploy-web; gantt; ant deploy-full; dgantt; op-finished;"
+alias target="echo 'suporte@communis.com.br \n''f@ct@rget153624\$\$'"
+alias dgantt="gantt; ganttfolder; ant deploy-fast; op-finished;"
 alias search-file="find -depth -name"
-#/usr/bin/flameshot gui - keyboard shortcut
+alias die="systemctl poweroff"
+alias restart="systemctl restart"
+alias sleep="systemctl suspend"
+alias hibernate="systemctl hibernate"
+
+#alias resetgit="fac; echo "target2/portal-test*" >> .gitignore"
+
+alias updatedisc="sudo dpkg --remove discord  && sudo dpkg -i $1 && rm $1"
+
+
+#git update-index --assume-unchanged // assume file unchanged
+
+export JAVAC_HOME=/opt/jdk/jdk1.8.0_261/bin/javac 
+export PATH=$PATH:/opt/jdk/jdk1.8.0_261/bin/javac
+
+
+export ANDROID_SDK=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_SDK/emulator
+export PATH=$PATH:$ANDROID_SDK/tools
+export PATH=$PATH:$ANDROID_SDK/tools/bin
+export PATH=$PATH:$ANDROID_SDK/platform-tools
+export ANDROID_HOME=$HOME/Android/Sdk
+#export JAVA_HOME=$HOME/Applications/android-studio/jre
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
