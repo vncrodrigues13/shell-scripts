@@ -1,105 +1,10 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="spaceship"
-#ZSH_THEME="agnoster"
+ZSH_THEME="robbyrussell"
 
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-)
+plugins=(git tmux)
 
 source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
  
  SPACESHIP_PROMPT_ORDER=(
   user          # Username section
@@ -116,13 +21,9 @@ source $ZSH/oh-my-zsh.sh
 )
 SPACESHIP_USER_SHOW=always
 SPACESHIP_PROMPT_ADD_NEWLINE=false
-SPACESHIP_CHAR_SYMBOL="❯❯"
+SPACESHIP_CHAR_SYMBOL="❯"
 SPACESHIP_CHAR_SUFFIX=" "
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias pf="cd $HOME/projects"
 alias ga="git add ."
 alias gc="git commit -m"
 alias gd="git diff"
@@ -130,45 +31,38 @@ alias gs="git status"
 alias gch="git checkout"
 alias gpull="git pull"
 alias gpush="git push"
-alias fac="cd $HOME/eclipse-workspace/target3"
+alias pf="cd $HOME/projects"
+alias fac="cd $HOME/facilit/target3"
 alias tg="fac; cd target2;"
-alias op-finished="notify-send 'The operation was completed' && paplay --volume=65536 /usr/share/sounds/Yaru/stereo/complete.oga && date"
+alias op-finished="notify-send 'The operation was completed'"
 alias dfast="tg; ant deploy-fast && op-finished"
 alias dfull="tg; ant deploy-full &&  op-finished"
 alias cad="tg; ant clean-and-deploy && op-finished"
-alias ganttfolder="fac; cd addons/scheduler;"
 alias gantt="fac; cd portal/jboss-eap-6.4/standalone/deployments/ROOT.war/html/portlet/facilit/scheduler; yarn"
-alias buildganttcomplete="ganttfolder; ant create-eclipse-project; dgantt; gantt; ganttfolder; ant deploy-web; gantt; ant deploy-full; dgantt; op-finished;"
-alias target="echo 'suporte@communis.com.br \n''f@ct@rget153624\$\$'"
-alias dgantt="gantt; ganttfolder; ant deploy-fast; op-finished;"
+alias asd="g++ -std=c++17 -o2 Wshadow -Wall"
+alias iop="g++ -o2 -std=c++17"
+alias dgantt="fac; cd addons/scheduler/ ; ant deploy-fast; op-finished;"
 alias search-file="find -depth -name"
-alias die="systemctl poweroff"
-alias restart="systemctl restart"
-alias sleep="systemctl suspend"
-alias hibernate="systemctl hibernate"
-
-#alias resetgit="fac; echo "target2/portal-test*" >> .gitignore"
-
-alias updatedisc="sudo dpkg --remove discord  && sudo dpkg -i $1 && rm $1"
-
-
-#git update-index --assume-unchanged // assume file unchanged
-
-export JAVAC_HOME=/opt/jdk/jdk1.8.0_261/bin/javac 
-export PATH=$PATH:/opt/jdk/jdk1.8.0_261/bin/javac
-
-
-export ANDROID_SDK=$HOME/Android/Sdk
-export PATH=$PATH:$ANDROID_SDK/emulator
-export PATH=$PATH:$ANDROID_SDK/tools
-export PATH=$PATH:$ANDROID_SDK/tools/bin
-export PATH=$PATH:$ANDROID_SDK/platform-tools
-export ANDROID_HOME=$HOME/Android/Sdk
-#export JAVA_HOME=$HOME/Applications/android-studio/jre
+alias kapp="kill -9 `ps aux | grep wildfly | grep -v grep | awk '{print $2}'`"
+#/usr/bin/flameshot gui - keyboard shortcut
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-#command to inspect folders size: "sudo du -h --max-depth=1"
+
+# Auto-start tmux if not already inside one
+if command -v tmux >/dev/null 2>&1; then
+  if [ -z "$TMUX" ]; then
+    tmux attach -t default || tmux new -s default
+  fi
+fi
+
+
+
+export ANDROID_HOME=/home/dev/Android/Sdk
+export PATH="${PATH}:${ANDROID_HOME}tools/:${ANDROID_HOME}platform-tools/"
